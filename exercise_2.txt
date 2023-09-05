@@ -1,0 +1,42 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // input: prices = [7,1,5,3,6,4]
+        // output: 5
+        // Explanation: Buy on day 2 (price: 1) and sell on day 5 (price: 6)
+        // 6-1: 5
+
+        List<Integer> nums = Arrays.asList(7,9,2,3,6,4);
+
+        int min = nums.get(0);
+        int posMin = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums.get(i) <= min) {
+                min = nums.get(i);
+                posMin = i;
+            }
+        }
+
+        int max = nums.get(posMin);
+        int posMax = 0;
+        for (int i = posMin; i < nums.size(); i++) {
+            if (nums.get(i) >= max) {
+                max = nums.get(i);
+                posMax = i;
+            }
+        }
+
+        int valor1 = nums.get(posMin);
+        int valor2 = nums.get(posMax);
+        int resultado = max - min;
+        System.out.println("Diferença de preço: " + resultado);
+        System.out.println("dia Compra: " + posMin++ + " | Valor: " + valor1);
+        System.out.println("dia Venda: " +  posMax++ + " | Valor: " + valor2);
+
+    }
+}
