@@ -1,0 +1,30 @@
+class Main {
+  public static void main(String[] args) {
+
+    int target = 9;
+
+    int[] nums = {7,1,8,4};
+    int[] res = new int[2];
+    
+    for (int i = 0; i < nums.length; i++) {
+      int[] novaLista = slice(nums, i, nums.length);
+      for (int j = 1; j < novaLista.length ; j++) {
+        if (novaLista[0] + novaLista[novaLista.length - j] == target) {
+          res[0] = i;
+          res[1] = novaLista.length - j;
+        }
+      }
+    }
+    System.out.println(res[0] + " " + res[1]);
+  }
+
+  public static int[] slice(int[] arr, int start, int end) {
+
+        int[] slice = new int[end - start];
+      
+        for (int z = 0; z < slice.length; z++) {
+            slice[z] = arr[start + z];
+        }
+        return slice;
+    }
+}
