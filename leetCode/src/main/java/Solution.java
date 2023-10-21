@@ -17,24 +17,25 @@ import java.util.Objects;
 
 class Solution {
 
-    //** WRONG ANSWER **//
+    //** CORRECT ANSWER **//
     public static int firstUniqChar(String s) {
-        String[] newWord = s.split("");
-        int letterPointer = 0;
-        for (int i = 1; i < newWord.length; i++) {
-            if (Objects.equals(newWord[i], newWord[letterPointer])) {
-                letterPointer++;
-                i = letterPointer + 1;
+        String[] newString = s.split("");
+        int[] vetor = new int[26];
+
+        for (int i = 0; i < newString.length; i++) {
+            vetor[newString[i].charAt(0) - 97]++;
+        }
+
+        for (int i = 0; i < newString.length; i++) {
+            if (vetor[newString[i].charAt(0) - 97] == 1) {
+                return i;
             }
         }
-        if (letterPointer == newWord.length) {
-            return -1;
-        }
-        return letterPointer;
+        return -1;
     }
 
     public static void main(String[] args) {
-        String value = "aabb";
+        String value = "hhhhhelp";
         System.out.println(firstUniqChar(value));
     }
 
