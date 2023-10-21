@@ -13,18 +13,15 @@
 //        Output: -1
 
 
-import java.util.Objects;
-
-class Solution {
+class FirstUniqChar {
 
     //** GENIUS ANSWER **//
     public static int firstUniqChar(String s) {
         // define o index
         int index = -1;
 
-        // itera pelo string
+        // itera pelo string transformando em char
         for(char ch : s.toCharArray()) {
-
             // verifica se o index do elemento em questão é o mesmo index do ultimo elemento em questão (genio viu)
             if(s.indexOf(ch) == s.lastIndexOf(ch)) {
                 // retorna se forem o mesmo elemento
