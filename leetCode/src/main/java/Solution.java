@@ -17,25 +17,21 @@ import java.util.Objects;
 
 class Solution {
 
-    //** CORRECT ANSWER **//
+    //** GENIUS ANSWER **//
     public static int firstUniqChar(String s) {
-        String[] newString = s.split("");
+        // define o index
+        int index = -1;
 
-        // cria vetor com 26 espaços em memoria no valor de zeros
-        int[] vetor = new int[26];
+        // itera pelo string
+        for(char ch : s.toCharArray()) {
 
-        // coloca dentro do array de acordo com a tabela ASCII
-        for (int i = 0; i < newString.length; i++) {
-            vetor[newString[i].charAt(0) - 97]++;
-        }
-
-        // verifica quantas ocorrencias são apenas 1 e retorna a posicao
-        for (int i = 0; i < newString.length; i++) {
-            if (vetor[newString[i].charAt(0) - 97] == 1) {
-                return i;
+            // verifica se o index do elemento em questão é o mesmo index do ultimo elemento em questão (genio viu)
+            if(s.indexOf(ch) == s.lastIndexOf(ch)) {
+                // retorna se forem o mesmo elemento
+                return s.indexOf(ch);
             }
         }
-        return -1;
+        return index;
     }
 
     public static void main(String[] args) {
