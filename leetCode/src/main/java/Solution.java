@@ -20,12 +20,16 @@ class Solution {
     //** CORRECT ANSWER **//
     public static int firstUniqChar(String s) {
         String[] newString = s.split("");
+
+        // cria vetor com 26 espaços em memoria no valor de zeros
         int[] vetor = new int[26];
 
+        // coloca dentro do array de acordo com a tabela ASCII
         for (int i = 0; i < newString.length; i++) {
             vetor[newString[i].charAt(0) - 97]++;
         }
 
+        // verifica quantas ocorrencias são apenas 1 e retorna a posicao
         for (int i = 0; i < newString.length; i++) {
             if (vetor[newString[i].charAt(0) - 97] == 1) {
                 return i;
@@ -35,7 +39,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        String value = "hhhhhelp";
+        String value = "loveleetcode";
         System.out.println(firstUniqChar(value));
     }
 
