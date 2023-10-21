@@ -1,33 +1,41 @@
-//  Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-//
-//        Note that you must do this in-place without making a copy of the array.
-//
+//Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
 //        Example 1:
-//        Input: nums = [0,1,0,3,12]
-//        Output: [1,3,12,0,0]
-//
+//        Input: s = "leetcode"
+//        Output: 0
+
 //        Example 2:
-//        Input: nums = [0]
-//        Output: [0]
+//        Input: s = "loveleetcode"
+//        Output: 2
+
+//        Example 3:
+//        Input: s = "aabb"
+//        Output: -1
+
+
+import java.util.Objects;
 
 class Solution {
-    public static int[] moveZeroes(int[] nums) {
-        int lastZero = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                int temp = nums[lastZero];
-                nums[lastZero] = nums[i];
-                nums[i] = temp;
-                lastZero++;
+
+    //** WRONG ANSWER **//
+    public static int firstUniqChar(String s) {
+        String[] newWord = s.split("");
+        int letterPointer = 0;
+        for (int i = 1; i < newWord.length; i++) {
+            if (Objects.equals(newWord[i], newWord[letterPointer])) {
+                letterPointer++;
+                i = letterPointer + 1;
             }
         }
-        return nums;
+        if (letterPointer == newWord.length) {
+            return -1;
+        }
+        return letterPointer;
     }
 
     public static void main(String[] args) {
-        int[] nums = {0, 1, 0, 3, 12};
-        int[] res = moveZeroes(nums);
-        System.out.println(res[0]);
+        String value = "aabb";
+        System.out.println(firstUniqChar(value));
     }
 
 }
