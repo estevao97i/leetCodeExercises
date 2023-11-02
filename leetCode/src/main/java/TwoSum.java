@@ -24,29 +24,20 @@ import java.util.*;
 public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
-        Map map = new HashMap();
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
-            if (map.containsValue(complement)) {
-                return new int[] {(int) findKey(map, complement).get(), i};
+            if (hashMap.containsKey(complement)) {
+                return new int[] {hashMap.get(complement), i};
             }
-            map.put(i, nums[i]);
+            hashMap.put(nums[i], i);
         }
         return null;
     }
 
     public static void main(String[] args) {
         int[] o = {3,3};
-        System.out.println(Arrays.toString(Objects.requireNonNull(twoSum(o, 6))));
+        System.out.println((Arrays.toString(twoSum(o, 6))));
     }
-
-    public static <K, T> Optional<K> findKey(Map<K, T> mapOrNull, T value) {
-        return Optional.ofNullable(mapOrNull).flatMap(map -> map.entrySet()
-                .stream()
-                .filter(e -> Objects.equals(e.getValue(), value))
-                .map(Map.Entry::getKey)
-                .findAny());
-    }
-
 
 }
