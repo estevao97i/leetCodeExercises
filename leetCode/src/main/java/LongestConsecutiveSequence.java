@@ -1,4 +1,3 @@
-import java.util.Collections;
 import java.util.HashSet;
 
 public class LongestConsecutiveSequence {
@@ -11,10 +10,9 @@ public class LongestConsecutiveSequence {
         for (int i = 0; i < set.size(); i++) {
             if (!set.contains(nums[i] - 1)) {
                 int cont = 1;
-                int num = nums[i] + 1;
-                while (set.contains(num)) {
+                while (set.contains(nums[i] + 1)) {
                     cont++;
-                    num++;
+                    nums[i]++;
                 }
                 maxCount = Math.max(maxCount, cont);
             }
@@ -24,7 +22,7 @@ public class LongestConsecutiveSequence {
 
 
     public static void main(String[] args) {
-        int[] arr = {100, 4, 200, 3,1,2};
+        int[] arr = {100, 4, 200, 3, 1, 2 ,101, 102, 103, 105, 104};
         System.out.println(longestConsecutive(arr));
     }
 }
