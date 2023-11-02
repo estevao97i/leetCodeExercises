@@ -1,5 +1,3 @@
-
-
 public class ContainerWMostWater {
 
     public static int maxArea(int[] height) {
